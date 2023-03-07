@@ -23,8 +23,8 @@ public class HelloFX extends Application {
                             = topVBox.getChildren();
                     //Find children from vBox by ID: ID = name-Label
                     Label label = (Label) list.stream()
-                            .filter(t->t.getId() != null)
-                            .filter(t->t.getId().equals("name-Label"))
+                            .filter(t -> t.getId() != null)
+                            .filter(t -> t.getId().equals("name-Label"))
                             .findFirst().get();
                     label.setText("Text - changed (filter)");
                 }
@@ -34,25 +34,45 @@ public class HelloFX extends Application {
     @Override
     public void start(Stage stage) {
 
-        VBox topVBox = new VBox();
-        Button button = new Button();
-        button.setText("Our button");
+        VBox lVbox = new VBox();
+        lVbox.setId("L-vBox");
 
-        Label label1 = new Label();
-        label1.setText("My Label!");
+        VBox mVbox = new VBox();
+
+        VBox rVBox = new VBox();
+        rVBox.setId("R-vBox");
+
+        Label label1 = new Label("Label1");
+        Label label2 = new Label("Label2");
+        Label label3 = new Label("Label3");
+
+        lVbox.getChildren().add(label1);
+        rVBox.getChildren().add(label3);
+        mVbox.getChildren().add(label2);
+
+        HBox rootHBox = new HBox();
+        rootHBox.setSpacing(100);
+        rootHBox.getChildren().add(lVbox);
+        rootHBox.getChildren().add(mVbox);
+        rootHBox.getChildren().add(rVBox);
+
+        Button button = new Button("Click me");
+        button.setOnMouseMoved(t -> {
+            if(lVbox.getChildren().contains(button)){
+                rVBox.getChildren().add(button);
+            }else{
+                lVbox.getChildren().add(button);
+            }
+        });
 
 
-        topVBox.getChildren().add(button);
-        topVBox.getChildren().add(label1);
-
-        label1.setId("name-Label");
+        lVbox.getChildren().add(button);
 
         StackPane stackPane = new StackPane();
-        stackPane.getChildren().add(topVBox);
+        stackPane.getChildren().add(rootHBox);
         Scene scene = new Scene(stackPane, 640, 480);
         stage.setScene(scene);
 
-        doOutput(topVBox, button);
         stage.show();
     }
 
