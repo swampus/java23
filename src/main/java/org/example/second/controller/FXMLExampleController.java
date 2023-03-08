@@ -1,5 +1,13 @@
 package org.example.second.controller;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+
 public class FXMLExampleController {
-//fx:controller="fxmlexample.FXMLExampleController"
+
+    @FXML
+    private Button bwmSearch;
+
+
+
 }

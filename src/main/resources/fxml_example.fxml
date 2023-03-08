@@ -6,8 +6,19 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+<GridPane xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10"
+          fx:controller="org.example.second.controller.FXMLExampleController">
     <padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
+    <VBox spacing="20">
+        <Text>Car Search Result</Text>
+        <ListView>
 
-    <Text>Hello Wourld</Text>
+        </ListView>
+        <Button fx:id="bmwSearch" text="BMW">
+
+        </Button>
+        <Button text="AUDI">
+
+        </Button>
+    </VBox>
 </GridPane>
