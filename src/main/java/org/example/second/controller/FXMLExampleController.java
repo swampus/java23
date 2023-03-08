@@ -18,24 +18,45 @@ public class FXMLExampleController {
     private Button audiSearch;
 
     @FXML
+    private Button deleteButton;
+
+    @FXML
     private ListView<Text> dataGrid;
 
     @FXML
     public void initialize() {
         DatabaseMock databaseMock = new DatabaseMock();
 
+        deleteButton.setOnMouseClicked(t-> {
+            Text text =
+                    dataGrid.getSelectionModel().getSelectedItem();
+            dataGrid.getItems().remove(text);
+
+            //sql to database
+        });
+
         bwmSearch.setOnMouseClicked(t -> {
+            dataGrid.getItems().clear();
             List<Car> bmws = databaseMock.getBwm();
-            Text text = new Text();
             for (Car bmw : bmws) {
-                text.setText(
-                        text.getText() + " "
-                                + bmw.getId() + " "
+                Text text = new Text();
+                text.setText(bmw.getId() + " "
                                 + bmw.getType() + " "
                                 + bmw.getPrice());
+                dataGrid.getItems().add(text);
             }
+        });
+
+        audiSearch.setOnMouseClicked(t -> {
             dataGrid.getItems().clear();
-            dataGrid.getItems().add(text);
+            List<Car> cars = databaseMock.getAudi();
+            for (Car audi : cars) {
+                Text text = new Text();
+                text.setText(audi.getId() + " "
+                        + audi.getType() + " "
+                        + audi.getPrice());
+                dataGrid.getItems().add(text);
+            }
         });
     }
 

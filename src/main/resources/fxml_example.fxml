@@ -16,11 +16,17 @@
         <ListView fx:id="dataGrid">
 
         </ListView>
-        <Button fx:id="bwmSearch" text="BMW">
 
-        </Button>
-        <Button fx:id="audiSearch" text="AUDI">
+        <HBox spacing="15">
+            <Button fx:id="bwmSearch" text="BMW">
 
-        </Button>
+            </Button>
+            <Button fx:id="audiSearch" text="AUDI">
+
+            </Button>
+
+            <Button fx:id="deleteButton">Delete</Button>
+        </HBox>
+
     </VBox>
 </GridPane>
