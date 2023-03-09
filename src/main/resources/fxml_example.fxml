@@ -19,9 +19,14 @@
             <Button fx:id="checkOutButton">Check-out</Button>
         </VBox>
         <VBox spacing="15">
+
             <Label>Registered Clients</Label>
             <ListView fx:id="registeredListView"></ListView>
-            <Button fx:id="checkInButton">Check-in</Button>
+            <HBox spacing="60">
+                <Button fx:id="checkInButton">Check-in</Button>
+                <Button fx:id="deleteButton">Terminate Contract</Button
+            </HBox>
+
         </VBox>
         <VBox spacing="15">
             <Label>Queue</Label>

@@ -25,6 +25,8 @@ public class FXMLExampleController {
     @FXML
     private Button checkInButton;
 
+    @FXML
+    private Button deleteButton;
 
     @FXML
     public void initialize() {
