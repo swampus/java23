@@ -40,16 +40,20 @@ public class FXMLExampleController {
             registeredListView.getItems().add(text);
         }
 
-        checkInButton.setOnMouseClicked(t-> {
+        checkInButton.setOnMouseClicked(t -> {
             Text selectedText = registeredListView.getSelectionModel()
                     .getSelectedItem();
-            if(selectedText == null){
+            if (selectedText == null) {
                 Alert alert = new Alert(
                         Alert.AlertType.ERROR, "No client is selected!");
                 alert.show();
-            }else{
-                activeListView.getItems().add(selectedText);
+            } else {
                 registeredListView.getItems().remove(selectedText);
+                if (activeListView.getItems().size() > 2) {
+                    queueListView.getItems().add(selectedText);
+                } else {
+                    activeListView.getItems().add(selectedText);
+                }
             }
 
         });
