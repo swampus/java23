@@ -48,7 +48,8 @@ public class FXMLExampleController {
                         Alert.AlertType.ERROR, "No client is selected!");
                 alert.show();
             }else{
-
+                activeListView.getItems().add(selectedText);
+                registeredListView.getItems().remove(selectedText);
             }
 
         });
