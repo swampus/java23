@@ -6,27 +6,26 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<?import javafx.collections.FXCollections?>
 <GridPane xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10"
           fx:controller="org.example.second.controller.FXMLExampleController">
     <padding>
         <Insets top="25" right="25" bottom="10" left="25"/>
     </padding>
-    <VBox spacing="20">
-        <Text>Car Search Result</Text>
-        <ListView fx:id="dataGrid">
-
-        </ListView>
-
-        <HBox spacing="15">
-            <Button fx:id="bwmSearch" text="BMW">
-
-            </Button>
-            <Button fx:id="audiSearch" text="AUDI">
-
-            </Button>
-
-            <Button fx:id="deleteButton">Delete</Button>
-        </HBox>
-
-    </VBox>
+    <HBox spacing="20">
+        <VBox spacing="15">
+            <Label>Active Clients</Label>
+            <ListView fx:id="activeListView"> </ListView>
+            <Button fx:id="checkOutButton">Check-out</Button>
+        </VBox>
+        <VBox spacing="15">
+            <Label>Registered Clients</Label>
+            <ListView fx:id="registeredListView"></ListView>
+            <Button fx:id="checkInButton">Check-in</Button>
+        </VBox>
+        <VBox spacing="15">
+            <Label>Queue</Label>
+            <ListView fx:id="queueListView"></ListView>
+        </VBox>
+    </HBox>
 </GridPane>

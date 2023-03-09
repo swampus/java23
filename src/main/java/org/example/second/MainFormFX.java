@@ -13,7 +13,7 @@ public class MainFormFX extends Application  {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxml_example.fxml"));
 
-        Scene scene = new Scene(root, 300, 275);
+        Scene scene = new Scene(root, 1200, 600);
 
         stage.setTitle("FXML Welcome");
         stage.setScene(scene);
