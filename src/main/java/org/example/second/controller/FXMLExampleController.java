@@ -39,7 +39,25 @@ public class FXMLExampleController {
 
             registeredListView.getItems().add(text);
         }
+        checkOutButton.setOnMouseClicked(t->{
+            Text selectedText = activeListView
+                    .getSelectionModel().getSelectedItem();
+            if (selectedText == null) {
+                Alert alert = new Alert(
+                        Alert.AlertType.ERROR, "No client is selected!");
+                alert.show();
+                return; //end method now
+            }
+            activeListView.getItems().remove(selectedText);
+            registeredListView.getItems().add(selectedText);
+            if(!queueListView.getItems().isEmpty()){
+                Text firstSelectedText =
+                        queueListView.getItems().get(0);
+                queueListView.getItems().remove(firstSelectedText);
+                activeListView.getItems().add(firstSelectedText);
+            }
 
+        });
         checkInButton.setOnMouseClicked(t -> {
             Text selectedText = registeredListView.getSelectionModel()
                     .getSelectedItem();
@@ -55,7 +73,6 @@ public class FXMLExampleController {
                     activeListView.getItems().add(selectedText);
                 }
             }
-
         });
 
     }
