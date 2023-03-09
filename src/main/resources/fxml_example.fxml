@@ -24,7 +24,7 @@
             <ListView fx:id="registeredListView"></ListView>
             <HBox spacing="60">
                 <Button fx:id="checkInButton">Check-in</Button>
-                <Button fx:id="deleteButton">Terminate Contract</Button
+                <Button fx:id="deleteButton">Terminate Contract</Button>
             </HBox>
 
         </VBox>
