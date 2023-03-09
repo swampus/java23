@@ -47,7 +47,10 @@ public class FXMLExampleController {
                 Alert alert = new Alert(
                         Alert.AlertType.ERROR, "No client is selected!");
                 alert.show();
+            }else{
+
             }
+
         });
 
     }
