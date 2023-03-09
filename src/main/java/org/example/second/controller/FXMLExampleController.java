@@ -41,13 +41,32 @@ public class FXMLExampleController {
 
             registeredListView.getItems().add(text);
         }
+
+        deleteButton.setOnMouseClicked(t-> {
+            Text selectedText = registeredListView
+                    .getSelectionModel().getSelectedItem();
+            if (selectedText == null) {
+                Alert alert = new Alert(
+                        Alert.AlertType.ERROR, "No client is selected!");
+                alert.showAndWait();
+                return; //end method now
+            }
+            Alert alert = new Alert(
+                    Alert.AlertType.CONFIRMATION, "Are you sure you want to terminate?");
+
+            if(alert.showAndWait().get()
+                    .getButtonData().name().equals("OK_DONE")){
+                registeredListView.getItems().remove(selectedText);
+            }
+        });
+
         checkOutButton.setOnMouseClicked(t->{
             Text selectedText = activeListView
                     .getSelectionModel().getSelectedItem();
             if (selectedText == null) {
                 Alert alert = new Alert(
                         Alert.AlertType.ERROR, "No client is selected!");
-                alert.show();
+                alert.showAndWait();
                 return; //end method now
             }
             activeListView.getItems().remove(selectedText);
