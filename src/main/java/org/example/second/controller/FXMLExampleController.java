@@ -37,7 +37,7 @@ public class FXMLExampleController {
             Text text = new Text();
             text.setText(gymClient.getName() + " "
                     + gymClient.getSurname() + " "
-                    + gymClient.getIdCode());
+                    + gymClient.getIdcode());
 
             registeredListView.getItems().add(text);
         }

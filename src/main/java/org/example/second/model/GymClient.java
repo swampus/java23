@@ -1,18 +1,21 @@
 package org.example.second.model;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "gymclient", schema = "public")
 public class GymClient {
-
-
+    @Id
+    private Long id;
+    @Column(name ="name")
     private String name;
+    @Column(name ="surname")
     private String surname;
-    private String idCode;
+    @Column(name ="idcode")
+    private String idcode;
 
-    public GymClient(String name, String surname,
-                     String idCode) {
-        this.name = name;
-        this.surname = surname;
-        this.idCode = idCode;
-    }
 
     public String getName() {
         return name;
@@ -30,11 +33,21 @@ public class GymClient {
         this.surname = surname;
     }
 
-    public String getIdCode() {
-        return idCode;
+    public String getIdcode() {
+        return idcode;
     }
 
-    public void setIdCode(String idCode) {
-        this.idCode = idCode;
+    public void setIdcode(String idcode) {
+        this.idcode = idcode;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
 }

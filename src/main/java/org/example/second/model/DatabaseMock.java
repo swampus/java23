@@ -1,26 +1,30 @@
 package org.example.second.model;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseMock {
+    private static SessionFactory factory;
 
-    public List<GymClient> loadClients(){
-        List<GymClient> list = new ArrayList<>();
-        list.add(new GymClient("Alex",
-                "Ivanov", "12345"));
-        list.add(new GymClient("Dmitry",
-                "Sidorov", "444444"));
-        list.add(new GymClient("Janis",
-                "Berzinsh", "67899"));
-        list.add(new GymClient("Ivo",
-                "Darzinsh", "777888"));
-        list.add(new GymClient("Martin",
-                "Tamm", "67899"));
-        list.add(new GymClient("Kaupo",
-                "Tamm", "112234"));
 
+    public List<GymClient> loadClients() {
+        Session session = getCurrentSessionFromConfig();
+        session.beginTransaction();
+        List<GymClient> list =
+                session.createQuery("FROM GymClient", GymClient.class).list();
         return list;
     }
-
+    public static Session getCurrentSessionFromConfig() {
+        // SessionFactory in Hibernate 5 example
+        Configuration config = new Configuration();
+        config.configure();
+        // local SessionFactory bean created
+        SessionFactory sessionFactory = config.buildSessionFactory();
+        Session session = sessionFactory.getCurrentSession();
+        return session;
+    }
 }
