@@ -23,8 +23,9 @@
             <Label>Registered Clients</Label>
             <ListView fx:id="registeredListView"></ListView>
             <HBox spacing="60">
-                <Button fx:id="checkInButton">Check-in</Button>
+                <Button style="-fx-background-color: #333333;" fx:id="checkInButton">Check-in</Button>
                 <Button fx:id="deleteButton">Terminate Contract</Button>
+                <Button fx:id="addNewClientButton">Add new client button</Button>
             </HBox>
 
         </VBox>

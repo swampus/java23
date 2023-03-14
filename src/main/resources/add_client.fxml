@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import javafx.collections.FXCollections?>
+<GridPane xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10"
+          fx:controller="org.example.second.controller.AddClientController">
+    <padding>
+        <Insets top="25" right="25" bottom="10" left="25"/>
+    </padding>
+    <VBox spacing="20">
+        <HBox spacing="20">
+            <Label>Name</Label>
+            <TextField fx:id="nameT"></TextField>
+        </HBox>
+        <HBox spacing="20">
+            <Label>Surname</Label>
+            <TextField fx:id="surnameT"></TextField>
+        </HBox>
+        <HBox spacing="20">
+            <Label>ID code</Label>
+            <TextField fx:id="idecodeT"></TextField>
+        </HBox>
+        <Button fx:id="saveButton">[ Save ]</Button>
+    </VBox>
+</GridPane>

@@ -1,10 +1,13 @@
 package org.example.second.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import org.example.second.MainFormFX;
 import org.example.second.model.DatabaseMock;
 import org.example.second.model.GymClient;
 
@@ -12,8 +15,12 @@ import java.util.List;
 
 public class FXMLExampleController {
 
+    public static Stage stageAddClient;
+
     private final static Integer MAX_CLIENTS_IN_GYM = 3;
 
+    @FXML
+    private Button addNewClientButton;
     @FXML
     private ListView<Text> activeListView;
     @FXML
@@ -27,6 +34,20 @@ public class FXMLExampleController {
 
     @FXML
     private Button deleteButton;
+
+    public void refreshClients(){
+        DatabaseMock databaseMock = new DatabaseMock();
+        List<GymClient> list = databaseMock.loadClients();
+        registeredListView.getItems().clear();
+        for (GymClient gymClient : list) {
+            Text text = new Text();
+            text.setText(gymClient.getName() + " "
+                    + gymClient.getSurname() + " "
+                    + gymClient.getIdcode());
+
+            registeredListView.getItems().add(text);
+        }
+    }
 
     @FXML
     public void initialize() {
@@ -94,6 +115,15 @@ public class FXMLExampleController {
                     activeListView.getItems().add(selectedText);
                 }
             }
+        });
+
+        addNewClientButton.setOnMouseClicked(t-> {
+            stageAddClient.show();
+            MainFormFX.mainStage.hide();
+            FXMLExampleController.stageAddClient.setOnCloseRequest(q-> {
+                MainFormFX.mainStage.show();
+                refreshClients();
+            });
         });
 
     }
